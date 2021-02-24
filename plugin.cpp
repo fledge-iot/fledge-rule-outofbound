@@ -122,13 +122,13 @@
 static const char *default_config = QUOTE(
 	{
 		"plugin": {
-			"description": "Generate a notifiction if the values of one or all the configured assets exceeds a configured value",
+			"description": "Generate a notification if the values of one or all the configured assets exceeds a configured value",
 			"type": "string",
 			"default": RULE_NAME ,
 			"readonly": "true"
 		},
 		"description": {
-			"description": "Generate a notifiction if the values of one or all the configured assets exceeds a configured value",
+			"description": "Generate a notification if the values of one or all the configured assets exceeds a configured value",
 			"type": "string",
 			"default": "Generate a notification if all configured assets trigger",
 			"displayName": "Rule",
@@ -271,7 +271,7 @@ bool plugin_eval(PLUGIN_HANDLE handle,
 	OutOfBound* rule = (OutOfBound *)handle;
 	map<std::string, RuleTrigger *>& triggers = rule->getTriggers();
 
-	// Iterate throgh all configured assets
+	// Iterate through all configured assets
 	// If we have multiple asset the evaluation result is
 	// TRUE only if all assets checks returned true
 
@@ -293,7 +293,7 @@ bool plugin_eval(PLUGIN_HANDLE handle,
 				retCount--;
 			}
 
-			// Add evalution timestamp
+			// Add evaluation timestamp
 			if (doc.HasMember(assetTimestamp.c_str()))
 			{
 				const Value& assetTime = doc[assetTimestamp.c_str()];
@@ -303,7 +303,7 @@ bool plugin_eval(PLUGIN_HANDLE handle,
 		}
 	}
 
-	// if retCount = 0, all ssets checks returned true
+	// if retCount = 0, all assets checks returned true
 	bool eval = !retCount ? true : false;
 
 	// Set final state: true is all calls to evalAsset() returned true
@@ -445,7 +445,7 @@ bool checkDoubleLimit(const Value& point, double limitValue)
  * @param    assetValue		JSON object with datapoints
  * @param    rule		Current configured rule trigger.
  *
- * @return			True if evalution succeded,
+ * @return			True if evaluation succeded,
  *				false otherwise.
  */
 bool evalAsset(const Value& assetValue, RuleTrigger* rule)
